@@ -1,7 +1,7 @@
 {
   "name": "super-simple-sitemap-generator",
   "description": "Node.js powered scraper that generates a sitemap.xml file from command line with just a URL. Works with CSR apps (React, Angular, Vue).",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "repository": "https://github.com/jvidalv/super-simple-sitemap-generator",
   "homepage": "https://github.com/jvidalv/super-simple-sitemap-generator",
   "author": "Josep Vidal <josepvidalvidal@gmail.com>",

@@ -1,6 +1,6 @@
 import { chromium, Browser, Page } from 'playwright';
 import { timeout } from '../utils/timeout';
-import { urlContainsPage, isUrlAnAnchor, getDate } from '../utils/urls';
+import { urlContainsPage, isUrlAnAnchor, getDate, normalizeUrl } from '../utils/urls';
 import * as builder from 'xmlbuilder';
 
 export class Sitemapper {
@@ -21,8 +21,9 @@ export class Sitemapper {
    * @param urls - Initial base URL(s) to start scraping from
    */
   constructor(wait: number, _limit: number, ...urls: string[]) {
-    this.baseUrls = [urls[0]];
-    this.urls = [urls[0]];
+    const normalizedBaseUrl = normalizeUrl(urls[0]);
+    this.baseUrls = [normalizedBaseUrl];
+    this.urls = [normalizedBaseUrl];
     this.parsedUrls = [];
     this.wait = wait;
     this.currentDate = getDate();
@@ -74,7 +75,9 @@ export class Sitemapper {
         });
       });
 
-      this.urls = [...extractedUrls, ...this.urls];
+      // Normalize URLs to remove trailing slashes
+      const normalizedUrls = extractedUrls.map(normalizeUrl);
+      this.urls = [...normalizedUrls, ...this.urls];
       this.removeRepeatedUrls();
       this.filterUrls();
       this.removeUrlFromUrls(url);

@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://github.com/jvidalv/node-simple-sitemap-generator/blob/master/assets/logo.png?raw=true" />
-</p>
-
 [![License](http://img.shields.io/npm/l/super-simple-sitemap-generator.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![NPM Version](http://img.shields.io/npm/v/super-simple-sitemap-generator.svg?style=flat-square)](https://npmjs.com/package/super-simple-sitemap-generator)
 [![NPM Downloads](https://img.shields.io/npm/dm/super-simple-sitemap-generator.svg?style=flat-square)](https://npmjs.com/package/super-simple-sitemap-generator)

@@ -55,8 +55,9 @@ class Sitemapper {
      * @param urls - Initial base URL(s) to start scraping from
      */
     constructor(wait, _limit, ...urls) {
-        this.baseUrls = [urls[0]];
-        this.urls = [urls[0]];
+        const normalizedBaseUrl = (0, urls_1.normalizeUrl)(urls[0]);
+        this.baseUrls = [normalizedBaseUrl];
+        this.urls = [normalizedBaseUrl];
         this.parsedUrls = [];
         this.wait = wait;
         this.currentDate = (0, urls_1.getDate)();
@@ -101,7 +102,9 @@ class Sitemapper {
                     return anchor.href;
                 });
             });
-            this.urls = [...extractedUrls, ...this.urls];
+            // Normalize URLs to remove trailing slashes
+            const normalizedUrls = extractedUrls.map(urls_1.normalizeUrl);
+            this.urls = [...normalizedUrls, ...this.urls];
             this.removeRepeatedUrls();
             this.filterUrls();
             this.removeUrlFromUrls(url);

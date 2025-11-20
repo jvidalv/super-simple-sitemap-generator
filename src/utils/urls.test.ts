@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { urlContainsPage, isUrlAnAnchor, getDate } from './urls';
+import { urlContainsPage, isUrlAnAnchor, getDate, normalizeUrl } from './urls';
 
 describe('urlContainsPage', () => {
   it('should return true when URL starts with the base page', () => {
@@ -62,5 +62,34 @@ describe('getDate', () => {
     expect(parts[0]).toHaveLength(4); // year
     expect(parts[1]).toHaveLength(2); // month
     expect(parts[2]).toHaveLength(2); // day
+  });
+});
+
+describe('normalizeUrl', () => {
+  it('should remove trailing slash from path URLs', () => {
+    expect(normalizeUrl('https://example.com/about/')).toBe('https://example.com/about');
+    expect(normalizeUrl('https://example.com/blog/post/')).toBe('https://example.com/blog/post');
+  });
+
+  it('should keep URLs without trailing slash unchanged', () => {
+    expect(normalizeUrl('https://example.com/about')).toBe('https://example.com/about');
+    expect(normalizeUrl('https://example.com')).toBe('https://example.com');
+  });
+
+  it('should remove trailing slash from root domain', () => {
+    expect(normalizeUrl('https://example.com/')).toBe('https://example.com');
+  });
+
+  it('should handle complex paths', () => {
+    expect(normalizeUrl('https://example.com/blog/2023/post/')).toBe('https://example.com/blog/2023/post');
+    expect(normalizeUrl('https://example.com/a/b/c/')).toBe('https://example.com/a/b/c');
+  });
+
+  it('should deduplicate URLs with and without trailing slashes', () => {
+    const url1 = normalizeUrl('https://josepvidal.dev/');
+    const url2 = normalizeUrl('https://josepvidal.dev');
+    // Both should be the same after normalization (without trailing slash)
+    expect(url1).toBe(url2);
+    expect(url1).toBe('https://josepvidal.dev');
   });
 });

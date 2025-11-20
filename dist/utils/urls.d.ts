@@ -12,6 +12,12 @@ export declare function urlContainsPage(url: string, page: string): boolean;
  */
 export declare function isUrlAnAnchor(url: string): boolean;
 /**
+ * Normalizes a URL by removing trailing slashes
+ * @param url - The URL to normalize
+ * @returns Normalized URL without trailing slash
+ */
+export declare function normalizeUrl(url: string): string;
+/**
  * Generates current date with yyyy-mm-dd format
  * @returns Current date in ISO format (YYYY-MM-DD)
  */

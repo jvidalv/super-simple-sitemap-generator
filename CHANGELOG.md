@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-01-20
+
+### Added
+
+- **URL normalization** - New `normalizeUrl()` function to remove trailing slashes for consistent deduplication
+
+### Fixed
+
+- **Duplicate URLs** - Fixed issue where URLs with and without trailing slashes (e.g., `https://example.com/` and `https://example.com`) were treated as separate URLs in the sitemap
+- **README** - Removed broken image reference
+
+### Changed
+
+- All URLs are now normalized to remove trailing slashes for consistency
+
 ## [2.0.0] - 2025-01-20
 
 ### Added
