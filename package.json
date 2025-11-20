@@ -1,0 +1,54 @@
+{
+  "name": "super-simple-sitemap-generator",
+  "description": "Node.js powered scraper that generates a sitemap.xml file from command line with just a URL. Works with CSR apps (React, Angular, Vue).",
+  "version": "2.0.0",
+  "repository": "https://github.com/jvidalv/super-simple-sitemap-generator",
+  "homepage": "https://github.com/jvidalv/super-simple-sitemap-generator",
+  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "sitemap",
+    "node",
+    "generator",
+    "react",
+    "angular",
+    "vue",
+    "playwright",
+    "typescript",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build && npm test",
+    "sitemap": "node ./dist/index.js"
+  },
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "sitemap": "./bin/cli.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "dependencies": {
+    "commander": "^12.1.0",
+    "playwright": "^1.48.2",
+    "xmlbuilder": "^15.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.6",
+    "@vitest/coverage-v8": "^2.1.8",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
